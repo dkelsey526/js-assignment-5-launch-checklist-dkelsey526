@@ -1,6 +1,3 @@
-// Write your helper functions here!
-// require('isomorphic-fetch');
-
 
 const pilotName = document.querySelector('input[name="pilotName"]');
 const copilotName = document.querySelector('input[name="copilotName"]');
@@ -11,10 +8,11 @@ const cargoMass = document.querySelector('input[name="cargoMass"]');
 require('isomorphic-fetch');
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, image) {
+
    // Here is the HTML formatting for our mission target div.
+   
 let missionTarget = document.getElementById('missionTarget');
-// let random = Math.round(Math.random() * data.length);
-// let target = data[random];
+
 
 missionTarget.innerHTML =
                `<h2>Mission Destination</h2>
@@ -28,21 +26,7 @@ missionTarget.innerHTML =
                 <img src="${image}">`
                 
 }
-// console.log(random);
-   /*
-                <h2>Mission Destination</h2>
-                <ol>
-                    <li>Name: </li>
-                    <li>Diameter: </li>
-                    <li>Star: ${star}</li>
-                    <li>Distance from Earth: </li>
-                    <li>Number of Moons: </li>
-                </ol>
-                <img src="">
-   */
-
               
-
 // validateInput() should take in a string as a parameter and return "Empty", "Not a Number", or "Is a Number"
 function validateInput(testInput) {
 
@@ -79,9 +63,6 @@ function formSubmission(document, pilotName, copilotName, fuelLevel, cargoMass) 
       alert("All fields are required");
       faultyItems.style.visibility = 'hidden';
       
-      // return false;
-
-      // launchStatus.style.color = 'black';
 			launchStatus.innerHTML = 'Awaiting Information Before Launch';
 
      } else {
@@ -93,9 +74,8 @@ function formSubmission(document, pilotName, copilotName, fuelLevel, cargoMass) 
   let cargoStatus = document.getElementById('cargoStatus')
   let ready = true;
 
+ faultyItems.style.visibility = 'visible';
 
-
-      faultyItems.style.visibility = 'visible';
 // Using template literals, update the li elements pilotStatus and copilotStatus to include the pilot's name and the co-pilot's name.
 
 // If the user submits a fuel level that is too low (less than 10,000 liters), change faultyItems to visible with an updated fuel status stating that there is not enough fuel for the journey. The text of the h2 element, launchStatus, should also change to "Shuttle not ready for launch" and the color should change to red.
@@ -147,7 +127,6 @@ function formSubmission(document, pilotName, copilotName, fuelLevel, cargoMass) 
 }
 
 
-
 async function myFetch() {
     let planetsReturned;
     let url = "https://handlers.education.launchcode.org/static/planets.json";
@@ -158,9 +137,6 @@ async function myFetch() {
     return planetsReturned;
 } 
 
-// https://handlers.education.launchcode.org/static/planets.json
-
-
 
 function pickPlanet(planets) {
   let planetsArray = planets;
@@ -168,9 +144,6 @@ function pickPlanet(planets) {
 return planetsArray[randomPlanets];
   
 }
-
-
-
 
 
 
