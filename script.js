@@ -2,6 +2,9 @@
 // Starter Code
 // window.addEventListener("load", function() {
 
+
+
+
 //     let listedPlanets;
 //     // Set listedPlanetsResponse equal to the value returned by calling myFetch()
 //     let listedPlanetsResponse;
@@ -34,19 +37,19 @@ window.addEventListener("load", function(event){
 
   
 
-  const listedPlanets = "https://handlers.education.launchcode.org/static/planets.json";
-  const fetchPromise = fetch(listedPlanets);
+  // const listedPlanets = "https://handlers.education.launchcode.org/static/planets.json";
+  // const fetchPromise = fetch(listedPlanets);
 
     // Set listedPlanetsResponse equal to the value returned by calling myFetch()
 
-    let listedPlanetsResponse;
+    let listedPlanetsResponse = myFetch();
 
-    fetchPromise.then(function(response){
-     response.json().then(function(data){
-      console.log(data);
-        });
-    });
-
+    // fetchPromise.then(function(response){
+    //  response.json().then(function(data){
+    //   console.log(data);
+    //     });
+    // });
+// console.log(listedPlanetsResponse);
     listedPlanetsResponse.then(function (result) {
         listedPlanets = result;
         console.log(listedPlanets);
@@ -54,6 +57,11 @@ window.addEventListener("load", function(event){
         console.log(listedPlanets);
 
         // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
+        let selectedPlanet = pickPlanet(listedPlanets);
+        console.log(selectedPlanet);
+        addDestinationInfo(document, selectedPlanet.name, selectedPlanet.diameter, selectedPlanet.star, selectedPlanet.distance, selectedPlanet.moons, selectedPlanet.image)
+      
+
     })
     
  });

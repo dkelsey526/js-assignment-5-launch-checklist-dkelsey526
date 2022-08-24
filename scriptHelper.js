@@ -10,8 +10,25 @@ const cargoMass = document.querySelector('input[name="cargoMass"]');
 // Write your helper functions here!
 require('isomorphic-fetch');
 
-function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
+function addDestinationInfo(document, name, diameter, star, distance, moons, image) {
    // Here is the HTML formatting for our mission target div.
+let missionTarget = document.getElementById('missionTarget');
+// let random = Math.round(Math.random() * data.length);
+// let target = data[random];
+
+missionTarget.innerHTML =
+               `<h2>Mission Destination</h2>
+                <ol>
+                    <li>Name: ${name}</li>
+                    <li>Diameter: ${diameter}</li>
+                    <li>Star: ${star}</li>
+                    <li>Distance from Earth: ${distance}</li>
+                    <li>Number of Moons: ${moons}</li>
+                </ol>
+                <img src="${image}">`
+                
+}
+// console.log(random);
    /*
                 <h2>Mission Destination</h2>
                 <ol>
@@ -23,7 +40,8 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
                 </ol>
                 <img src="">
    */
-}
+
+              
 
 // validateInput() should take in a string as a parameter and return "Empty", "Not a Number", or "Is a Number"
 function validateInput(testInput) {
@@ -132,20 +150,23 @@ function formSubmission(document, pilotName, copilotName, fuelLevel, cargoMass) 
 
 async function myFetch() {
     let planetsReturned;
-
-    planetsReturned = await fetch().then( function(response) {
+    let url = "https://handlers.education.launchcode.org/static/planets.json";
+    planetsReturned = await fetch(url).then( function(response) {
+      return response.json();
         });
 
     return planetsReturned;
 } 
-
-
 
 // https://handlers.education.launchcode.org/static/planets.json
 
 
 
 function pickPlanet(planets) {
+  let planetsArray = planets;
+  let randomPlanets = Math.round(Math.random() * planets.length);
+return planetsArray[randomPlanets];
+  
 }
 
 
