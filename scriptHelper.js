@@ -70,7 +70,7 @@ function formSubmission(document, pilotName, copilotName, fuelLevel, cargoMass) 
 
       alert("All fields are required");   
 
-    } else if (validateInput(fuelLevel !== 0) || validateInput(cargoMass) !== 0 ) {
+    } else if (validateInput(fuelLevel !== Number) || validateInput(cargoMass) !== Number ) {
 
       alert("Not a Number");   
 
