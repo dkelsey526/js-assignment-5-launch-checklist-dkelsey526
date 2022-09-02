@@ -49,7 +49,13 @@ function validateInput(testInput) {
 
 // Use preventDefault() to prevent a request from being sent out and the page reloading. 
 // formSubmission() will take in a document parameter and strings representing the pilot, co-pilot, fuel level, and cargo mass.
+// if(validateInput(pilotName) === "Empty" || validateInput(copilotName) === "Empty" || validateInput(fuelLevel) === "Empty" || validateInput(cargoMass) === "Empty"  ) {
 
+// } else {
+//   validateInput(pilotName) === "Not a Number" || validateInput(copilotName) === "Not a Number" || validateInput(fuelLevel) === "Is a Number" || validateInput(cargoMass) === "Is a Number";
+
+faultyItems.style.visibility = 'hidden';
+// launchStatus.innerHTML = 'Awaiting Information Before Launch';
 
 function formSubmission(document, pilotName, copilotName, fuelLevel, cargoMass) {
 
@@ -57,15 +63,26 @@ function formSubmission(document, pilotName, copilotName, fuelLevel, cargoMass) 
   document.getElementById('copilotStatus').innerHTML = `Co-pilot ${ copilotName + ' '}Ready`
 
   let form = document.querySelector("form");
+  
+
     
-    if(pilotName === '' || pilotName === null || copilotName === '' || copilotName === null || fuelLevel === '' || fuelLevel === isNaN || cargoMass === '' || cargoMass === isNaN  ) {
+    if(validateInput(pilotName) === "Empty" || validateInput(copilotName) === "Empty" || validateInput(fuelLevel) === "Empty" || validateInput(cargoMass) === "Empty"  ) {
 
-      alert("All fields are required");
-      faultyItems.style.visibility = 'hidden';
+      alert("All fields are required");   
+
+    } else if (validateInput(fuelLevel !== 0) || validateInput(cargoMass) !== 0 ) {
+
+      alert("Not a Number");   
+
+    } else if (validateInput(pilotName) !== "" ||  validateInput(copilotName) !== "" ) {
+
+      alert("Is a Number");
+
+
+    } else
+
       
-			launchStatus.innerHTML = 'Awaiting Information Before Launch';
-
-     } else {
+    launchStatus.innerHTML = 'Awaiting Information Before Launch';
 
 
   let faultyItems = document.getElementById('faultyItems');
@@ -124,7 +141,7 @@ function formSubmission(document, pilotName, copilotName, fuelLevel, cargoMass) 
 			} 
    }    
 
-}
+
 
 
 async function myFetch() {
