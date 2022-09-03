@@ -4,6 +4,8 @@ const copilotName = document.querySelector('input[name="copilotName"]');
 const fuelLevel = document.querySelector('input[name="fuelLevel"]');
 const cargoMass = document.querySelector('input[name="cargoMass"]');
 
+
+
 // Write your helper functions here!
 require('isomorphic-fetch');
 
@@ -38,12 +40,14 @@ function validateInput(testInput) {
   // is NaN
   if(isNaN(testInput)){
     return "Not a Number";
+  } else {
+    return "Is a Number";
   }
 
   // is Integer
-  if(Number.isInteger(testInput)){
-    return "Is a Number";
-  }
+  // if(Number.isInteger(testInput)){
+  //   return "Is a Number";
+  // }
    
 }
 
@@ -64,31 +68,32 @@ function formSubmission(document, pilotName, copilotName, fuelLevel, cargoMass) 
 
   let form = document.querySelector("form");
   
+  
 
     
     if(validateInput(pilotName) === "Empty" || validateInput(copilotName) === "Empty" || validateInput(fuelLevel) === "Empty" || validateInput(cargoMass) === "Empty"  ) {
 
       alert("All fields are required");   
 
-    } else if (validateInput(fuelLevel) !== Number || validateInput(cargoMass) !== Number ) {
+    } else if (validateInput(fuelLevel) === "Not a Number"|| validateInput(cargoMass) === "Not a Number" ) {
 
-      alert("Not a Number");   
+      alert("Wrong type entered");   
 
-    } else if (validateInput(pilotName) !== "" ||  validateInput(copilotName) !== "" ) {
+    } else if (validateInput(pilotName) === "Is a Number" ||  validateInput(copilotName) === "Is a Number" ) {
 
-      alert("Is a Number");
+      alert("Wrong type entered");
 
 
     } else
 
-      
+    var launchStatus = document.getElementById('launchStatus');  
     launchStatus.innerHTML = 'Awaiting Information Before Launch';
 
 
-  let faultyItems = document.getElementById('faultyItems');
-  let launchStatus = document.getElementById('launchStatus');
-  let fuelStatus = document.getElementById('fuelStatus');
-  let cargoStatus = document.getElementById('cargoStatus')
+  var faultyItems = document.getElementById('faultyItems');
+
+  var fuelStatus = document.getElementById('fuelStatus');
+  var cargoStatus = document.getElementById('cargoStatus')
   let ready = true;
 
  faultyItems.style.visibility = 'visible';
